@@ -10,14 +10,13 @@ import org.springframework.stereotype.Component;
 public class Role_test {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private String name;
 
-    @OneToOne
-    @MapsId
-    @JoinColumn(name = "user_test_id")
+    @OneToOne()
+   @JoinColumn(name = "user_test_id")
     private User_test user_test;
 
     public void setName(String name) {
@@ -25,6 +24,7 @@ public class Role_test {
     }
 
     public void setUser_test(User_test user_test) {
+        user_test.setRole_test(this);
         this.user_test = user_test;
     }
 }

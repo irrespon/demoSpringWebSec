@@ -26,10 +26,9 @@ public class UserServiceImpl implements UserService{
     public boolean saveUser(String userName, String roleName) {
         userTest.setName(userName);
         roleTest.setName(roleName);
+        roleTest.setUser_test(userTest);
 
-        userTest.setRole_test(roleTest);
         userSpringWebRepository.save(userTest);
-
         return true;
     }
 

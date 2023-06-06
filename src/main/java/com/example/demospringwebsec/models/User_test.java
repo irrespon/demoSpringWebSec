@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class User_test {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
@@ -32,11 +32,13 @@ public class User_test {
     }
 
     @OneToOne(mappedBy = "user_test", cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
+    // @JoinColumn(referencedColumnName = "id")
     private Role_test role_test;
 
     public void setRole_test(Role_test role_test) {
         this.role_test = role_test;
-        role_test.setUser_test(this);
     }
 }
+
+
+
